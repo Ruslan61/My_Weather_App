@@ -30,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addSensor() {
+        int intTemp;
         SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE) != null) {
+            intTemp = Sensor.TYPE_AMBIENT_TEMPERATURE;
             TextView temperature = findViewById(R.id.tempView);
-            temperature.setText(Sensor.TYPE_AMBIENT_TEMPERATURE);
+            temperature.setText(intTemp);
         }
     }
 
