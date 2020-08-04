@@ -4,9 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -22,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = initToolbar();
         initDrawer(toolbar);
+        addSensor();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void addSensor() {
+        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE) != null) {
+            TextView temperature = findViewById(R.id.tempView);
+            temperature.setText(Integer.toString(Sensor.TYPE_AMBIENT_TEMPERATURE));
+        }
     }
 
     private Toolbar initToolbar() {
@@ -50,25 +65,20 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(searchText, query, Snackbar.LENGTH_LONG).show();
                 return true;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return true;
             }
         });
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
 }

@@ -15,11 +15,11 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
-            <ImageView
-                android:id="@+id/imageView2"
+            <TextView
+                android:id="@+id/tempView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:text="temp"/>
         </androidx.appcompat.widget.Toolbar>
         
     </com.google.android.material.appbar.AppBarLayout>
