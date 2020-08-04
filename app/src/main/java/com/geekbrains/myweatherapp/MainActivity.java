@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -29,13 +30,12 @@ public class MainActivity extends AppCompatActivity {
         addSensor();
     }
 
+    @SuppressLint("SetTextI18n")
     private void addSensor() {
-        int intTemp;
         SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE) != null) {
-            intTemp = Sensor.TYPE_AMBIENT_TEMPERATURE;
             TextView temperature = findViewById(R.id.tempView);
-            temperature.setText(intTemp);
+            temperature.setText(Integer.toString(Sensor.TYPE_AMBIENT_TEMPERATURE));
         }
     }
 
