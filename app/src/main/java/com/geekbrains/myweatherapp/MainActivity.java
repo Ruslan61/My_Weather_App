@@ -65,24 +65,20 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(searchText, query, Snackbar.LENGTH_LONG).show();
                 return true;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return true;
             }
         });
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
